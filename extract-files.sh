@@ -82,8 +82,8 @@ fi
 
 # SGX SDK
 SGX_SDK="lib/libIMGegl.so lib/egl/libGLES_android.so lib/egl/egl.cfg \
-         bin/pvrsrvinit etc/powervr.ini lib/libsrv_um.so \
-         lib/hw/gralloc.omap3.so lib/libpvrPVR2D_FLIPWSEGL.so lib/libusc.so \
+         bin/pvrsrvinit lib/libsrv_um.so lib/hw/gralloc.omap3.so \
+         lib/libpvrPVR2D_FLIPWSEGL.so lib/libusc.so \
          lib/libglslcompiler.so lib/libPVRScopeServices.so \
          lib/libpvrANDROID_WSEGL.so lib/libpvrPVR2D_FRONTWSEGL.so \
          lib/libOpenVG.so lib/libpvr2d.so lib/libsrv_init.so \
@@ -98,7 +98,7 @@ fi
 
 # audio legacy
 audio_legacy="lib/libaudiopolicy.so lib/libaudio.so lib/libasound.so \
-              lib/liba2dp.so lib/hw/alsa.omap3.so usr/share/alsa/init/hda \
+              lib/liba2dp.so usr/share/alsa/init/hda \
               usr/share/alsa/init/00main usr/share/alsa/init/help \
               usr/share/alsa/init/default usr/share/alsa/init/info \
               usr/share/alsa/init/test usr/share/alsa/pcm/surround51.conf \
