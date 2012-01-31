@@ -19,7 +19,7 @@ MANUFACTURER=matsunichi
 
 mkdir prebuilt
 
-# get the kernel and other good stuff
+# TODO - get the kernel and other good stuff
 
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/prebuilt
@@ -46,7 +46,34 @@ else
 fi
 
 # DSP Codecs
-DSP_codecs="libbridge.so libomap_mm_library_jni.so libomx_aacdec_sharedlibrary.so libomx_amrdec_sharedlibrary.so libomx_amrenc_sharedlibrary.so libomx_avcdec_sharedlibrary.so libOMX_Core.so libOMX.ITTIAM.AAC.decode.so libOMX.ITTIAM.AAC.encode.so libomx_m4vdec_sharedlibrary.so libomx_mp3dec_sharedlibrary.so libomx_sharedlibrary.so libOMX.TI.720P.Decoder.so libOMX.TI.720P.Encoder.so libOMX.TI.AAC.decode.so libOMX.TI.AAC.encode.so libOMX.TI.AMR.decode.so libOMX.TI.AMR.encode.so libOMX.TI.G711.decode.so libOMX.TI.G711.encode.so libOMX.TI.G722.decode.so libOMX.TI.G722.encode.so libOMX.TI.G726.decode.so libOMX.TI.G726.encode.so libOMX.TI.G729.decode.so libOMX.TI.G729.encode.so libOMX.TI.h264.splt.Encoder.so libOMX.TI.ILBC.decode.so libOMX.TI.ILBC.encode.so libOMX.TI.JPEG.decoder.so libOMX.TI.JPEG.encoder.so libOMX.TI.MP3.decode.so libOMX.TI.mp4.splt.Encoder.so libOMX.TI.Video.Decoder.so libOMX.TI.Video.encoder.so libOMX.TI.VPP.so libOMX.TI.WBAMR.decode.so libOMX.TI.WBAMR.encode.so libOMX.TI.WMA.decode.so libopencore_asflocalreg.so libopencore_asflocal.so libopencore_author.so libopencore_common.so libopencore_downloadreg.so libopencore_download.so libopencorehw.so libopencore_mp4localreg.so libopencore_mp4local.so libopencore_net_support.so libopencore_player.so libopencore_rtspreg.so libopencore_rtsp.so libPERF.so libstagefright_omx.so libVendor_ti_omx_config_parser.so libVendor_ti_omx.so"
+DSP_codecs="libbridge.so libomap_mm_library_jni.so \
+            libomx_aacdec_sharedlibrary.so libomx_amrdec_sharedlibrary.so \
+            libomx_amrenc_sharedlibrary.so libomx_avcdec_sharedlibrary.so \
+            libOMX_Core.so libOMX.ITTIAM.AAC.decode.so \
+            libOMX.ITTIAM.AAC.encode.so libomx_m4vdec_sharedlibrary.so \
+            libomx_mp3dec_sharedlibrary.so libomx_sharedlibrary.so \
+            libOMX.TI.720P.Decoder.so libOMX.TI.720P.Encoder.so \
+            libOMX.TI.AAC.decode.so libOMX.TI.AAC.encode.so \
+            libOMX.TI.AMR.decode.so libOMX.TI.AMR.encode.so \
+            libOMX.TI.G711.decode.so libOMX.TI.G711.encode.so \
+            libOMX.TI.G722.decode.so libOMX.TI.G722.encode.so \
+            libOMX.TI.G726.decode.so libOMX.TI.G726.encode.so \
+            libOMX.TI.G729.decode.so libOMX.TI.G729.encode.so \
+            libOMX.TI.h264.splt.Encoder.so libOMX.TI.ILBC.decode.so \
+            libOMX.TI.ILBC.encode.so libOMX.TI.JPEG.decoder.so \
+            libOMX.TI.JPEG.encoder.so libOMX.TI.MP3.decode.so \
+            libOMX.TI.mp4.splt.Encoder.so libOMX.TI.Video.Decoder.so \
+            libOMX.TI.Video.encoder.so libOMX.TI.VPP.so \
+            libOMX.TI.WBAMR.decode.so libOMX.TI.WBAMR.encode.so \
+            libOMX.TI.WMA.decode.so libopencore_asflocalreg.so \
+            libopencore_asflocal.so libopencore_author.so \
+            libopencore_common.so libopencore_downloadreg.so \
+            libopencore_download.so libopencorehw.so \
+            libopencore_mp4localreg.so libopencore_mp4local.so \
+            libopencore_net_support.so libopencore_player.so \
+            libopencore_rtspreg.so libopencore_rtsp.so libPERF.so \
+            libstagefright_omx.so libVendor_ti_omx_config_parser.so \
+            libVendor_ti_omx.so"
 if [ -z "$1" ]; then
     for file in $DSP_codecs; do adb pull "/system/lib/$file" "../../../vendor/$MANUFACTURER/$DEVICE/proprietary/$file"; done
 else
@@ -54,60 +81,45 @@ else
 fi
 
 # SGX SDK
-SGX_SDK="
-
-adb pull /system/lib/libIMGegl.so ../../../vendor/bn/encore/proprietary/libIMGegl.so
-adb pull /system/lib/egl/libGLES_android.so ../../../vendor/bn/encore/proprietary/libGLES_android.so
-adb pull /system/lib/egl/egl.cfg ../../../vendor/bn/encore/proprietary/egl.cfg
-adb pull /system/bin/pvrsrvinit ../../../vendor/bn/encore/proprietary/pvrsrvinit
-adb pull /system/etc/powervr.ini ../../../vendor/bn/encore/proprietary/powervr.ini
-adb pull /system/lib/libsrv_um.so ../../../vendor/bn/encore/proprietary/libsrv_um.so
-adb pull /system/lib/hw/gralloc.omap3.so ../../../vendor/bn/encore/proprietary/gralloc.omap3.so
-adb pull /system/lib/libpvrPVR2D_FLIPWSEGL.so ../../../vendor/bn/encore/proprietary/libpvrPVR2D_FLIPWSEGL.so
-adb pull /system/lib/libusc.so ../../../vendor/bn/encore/proprietary/libusc.so
-adb pull /system/lib/libglslcompiler.so ../../../vendor/bn/encore/proprietary/libglslcompiler.so
-adb pull /system/lib/libPVRScopeServices.so ../../../vendor/bn/encore/proprietary/libPVRScopeServices.so
-adb pull /system/lib/libpvrANDROID_WSEGL.so ../../../vendor/bn/encore/proprietary/libpvrANDROID_WSEGL.so
-adb pull /system/lib/libpvrPVR2D_FRONTWSEGL.so ../../../vendor/bn/encore/proprietary/libpvrPVR2D_FRONTWSEGL.so
-adb pull /system/lib/libOpenVG.so ../../../vendor/bn/encore/proprietary/libOpenVG.so
-adb pull /system/lib/libpvr2d.so ../../../vendor/bn/encore/proprietary/libpvr2d.so
-adb pull /system/lib/libsrv_init.so ../../../vendor/bn/encore/proprietary/libsrv_init.so
-adb pull /system/lib/libOpenVGU.so ../../../vendor/bn/encore/proprietary/libOpenVGU.so
-adb pull /system/lib/egl/libGLESv1_CM_POWERVR_SGX530_125.so ../../../vendor/bn/encore/proprietary/libGLESv1_CM_POWERVR_SGX530_125.so
-adb pull /system/lib/egl/libEGL_POWERVR_SGX530_125.so ../../../vendor/bn/encore/proprietary/libEGL_POWERVR_SGX530_125.so
-adb pull /system/lib/egl/libGLESv2_POWERVR_SGX530_125.so ../../../vendor/bn/encore/proprietary/libGLESv2_POWERVR_SGX530_125.so
+SGX_SDK="lib/libIMGegl.so lib/egl/libGLES_android.so lib/egl/egl.cfg \
+         bin/pvrsrvinit etc/powervr.ini lib/libsrv_um.so \
+         lib/hw/gralloc.omap3.so lib/libpvrPVR2D_FLIPWSEGL.so lib/libusc.so \
+         lib/libglslcompiler.so lib/libPVRScopeServices.so \
+         lib/libpvrANDROID_WSEGL.so lib/libpvrPVR2D_FRONTWSEGL.so \
+         lib/libOpenVG.so lib/libpvr2d.so lib/libsrv_init.so \
+         lib/libOpenVGU.so lib/egl/libGLESv1_CM_POWERVR_SGX530_125.so \
+         lib/egl/libEGL_POWERVR_SGX530_125.so \
+         lib/egl/libGLESv2_POWERVR_SGX530_125.so"
+if [ -z "$1" ]; then
+    for file in $SGX_SDK; do adb pull "/system/$file" "../../../vendor/$MANUFACTURER/$DEVICE/proprietary/`basename $file`"; done
+else
+    for file in $SGX_SDK; do cp "$1/lib/$file" "../../../vendor/$MANUFACTURER/$DEVICE/proprietary/`basename $file`"; done
+fi
 
 # audio legacy
+audio_legacy="lib/libaudiopolicy.so lib/libaudio.so lib/libasound.so \
+              lib/liba2dp.so lib/hw/alsa.omap3.so usr/share/alsa/init/hda \
+              usr/share/alsa/init/00main usr/share/alsa/init/help \
+              usr/share/alsa/init/default usr/share/alsa/init/info \
+              usr/share/alsa/init/test usr/share/alsa/pcm/surround51.conf \
+              usr/share/alsa/pcm/surround41.conf \
+              usr/share/alsa/pcm/default.conf usr/share/alsa/pcm/dmix.conf \
+              usr/share/alsa/pcm/modem.conf usr/share/alsa/pcm/side.conf \
+              usr/share/alsa/pcm/front.conf usr/share/alsa/pcm/iec958.conf \
+              usr/share/alsa/pcm/surround50.conf \
+              usr/share/alsa/pcm/surround40.conf \
+              usr/share/alsa/pcm/surround71.conf usr/share/alsa/pcm/dpl.conf \
+              usr/share/alsa/pcm/dsnoop.conf usr/share/alsa/pcm/rear.conf \
+              usr/share/alsa/pcm/center_lfe.conf \
+              usr/share/alsa/cards/aliases.conf usr/share/alsa/alsa.conf"
+if [ -z "$1" ]; then
+    for file in $audio_legacy; do adb pull "/system/$file" "../../../vendor/$MANUFACTURER/$DEVICE/proprietary/`basename $file`"; done
+else
+    for file in $audio_legacy; do cp "$1/lib/$file" "../../../vendor/$MANUFACTURER/$DEVICE/proprietary/`basename $file`"; done
+fi
+exit 0
 
-adb pull /system/lib/libaudiopolicy.so ../../../vendor/bn/encore/prebuilt/libaudiopolicy.so
-adb pull /system/lib/libaudio.so ../../../vendor/bn/encore/prebuilt/libaudio.so
-adb pull /system/lib/libasound.so ../../../vendor/bn/encore/prebuilt/libasound.so
-adb pull /system/lib/liba2dp.so ../../../vendor/bn/encore/prebuilt/liba2dp.so
-adb pull /system/lib/hw/alsa.omap3.so ../../../vendor/bn/encore/prebuilt/alsa.omap3.so
-adb pull /system/usr/share/alsa/init/hda ../../../vendor/bn/encore/prebuilt/hda
-adb pull /system/usr/share/alsa/init/00main ../../../vendor/bn/encore/prebuilt/00main
-adb pull /system/usr/share/alsa/init/help ../../../vendor/bn/encore/prebuilt/help
-adb pull /system/usr/share/alsa/init/default ../../../vendor/bn/encore/prebuilt/default
-adb pull /system/usr/share/alsa/init/info ../../../vendor/bn/encore/prebuilt/info
-adb pull /system/usr/share/alsa/init/test ../../../vendor/bn/encore/prebuilt/test
-adb pull /system/usr/share/alsa/pcm/surround51.conf ../../../vendor/bn/encore/prebuilt/surround51.conf
-adb pull /system/usr/share/alsa/pcm/surround41.conf ../../../vendor/bn/encore/prebuilt/surround41.conf
-adb pull /system/usr/share/alsa/pcm/default.conf ../../../vendor/bn/encore/prebuilt/default.conf
-adb pull /system/usr/share/alsa/pcm/dmix.conf ../../../vendor/bn/encore/prebuilt/dmix.conf
-adb pull /system/usr/share/alsa/pcm/modem.conf ../../../vendor/bn/encore/prebuilt/modem.conf
-adb pull /system/usr/share/alsa/pcm/side.conf ../../../vendor/bn/encore/prebuilt/side.conf
-adb pull /system/usr/share/alsa/pcm/front.conf ../../../vendor/bn/encore/prebuilt/front.conf
-adb pull /system/usr/share/alsa/pcm/iec958.conf ../../../vendor/bn/encore/prebuilt/iec958.conf
-adb pull /system/usr/share/alsa/pcm/surround50.conf ../../../vendor/bn/encore/prebuilt/surround50.conf
-adb pull /system/usr/share/alsa/pcm/surround40.conf ../../../vendor/bn/encore/prebuilt/surround40.conf
-adb pull /system/usr/share/alsa/pcm/surround71.conf ../../../vendor/bn/encore/prebuilt/surround71.conf
-adb pull /system/usr/share/alsa/pcm/dpl.conf ../../../vendor/bn/encore/prebuilt/dpl.conf
-adb pull /system/usr/share/alsa/pcm/dsnoop.conf ../../../vendor/bn/encore/prebuilt/dsnoop.conf
-adb pull /system/usr/share/alsa/pcm/rear.conf ../../../vendor/bn/encore/prebuilt/rear.conf
-adb pull /system/usr/share/alsa/pcm/center_lfe.conf ../../../vendor/bn/encore/prebuilt/center_lfe.conf
-adb pull /system/usr/share/alsa/cards/aliases.conf ../../../vendor/bn/encore/prebuilt/aliases.conf
-adb pull /system/usr/share/alsa/alsa.conf ../../../vendor/bn/encore/prebuilt/alsa.conf
-
+# TODO from here down
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g | sed s/__MANUFACTURER__/$MANUFACTURER/g > ../../../vendor/$MANUFACTURER/$DEVICE/device-vendor-blobs.mk
 # Copyright (C) 2010 The Android Open Source Project
 #
@@ -273,4 +285,3 @@ EOF
 
 
 ./setup-makefiles.sh
-
