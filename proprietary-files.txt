@@ -1,0 +1,30 @@
+# DSP related libs and firmware
+lib/dsp
+
+# DSP Codecs
+lib/libbridge.so
+lib/libomap_mm_library_jni.so
+lib/libomx*_sharedlibrary.so
+lib/libOMX*.so
+lib/libopencore*.so
+lib/libPERF.so
+lib/libstagefright_omx.so
+lib/libVendor_ti_omx_config_parser.so
+lib/libVendor_ti_omx.so
+
+# SGX SDK
+lib/libIMGegl.so*
+bin/pvrsrvinit
+lib/libsrv_um.so*
+lib/hw/gralloc.omap3.*
+lib/libpvrPVR2D_FLIPWSEGL.so*
+lib/libusc.so*
+lib/libglslcompiler.so*
+lib/libPVRScopeServices.so*
+lib/libpvrANDROID_WSEGL.so*
+lib/libpvrPVR2D_FRONTWSEGL.so*
+lib/libOpenVG.so*
+lib/libpvr2d.so*
+lib/libsrv_init.so*
+lib/libOpenVGU.so*
+lib/egl/*

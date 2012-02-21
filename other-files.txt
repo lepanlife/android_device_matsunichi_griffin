@@ -1,0 +1,18 @@
+# wifi
+etc/wifi/firmware.bin
+etc/wifi/tiwlan_drv.ko
+etc/wifi/tiwlan.ini
+etc/wifi/wpa_supplicant.conf
+
+# key mapping
+usr/keylayout/griffin-i2c-touch.kl
+usr/keylayout/twl4030-keypad.kl
+usr/keylayout/twl4030_pwrbutton.kl
+
+# Bluetooth
+etc/firmware/TIInit_7.2.31.bts
+
+# Overlay (griffin)
+lib/hw/overlay.griffin.so
+
+lib/egl/egl.cfg

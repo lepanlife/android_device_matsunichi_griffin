@@ -1,5 +1,4 @@
 #
-# Copyright (C) 2008 The Android Open Source Project
 # Copyright (C) 2011 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,16 +14,13 @@
 # limitations under the License.
 #
 
-#
-# This file should set PRODUCT_MAKEFILES to a list of product makefiles
-# to expose to the build system.  LOCAL_DIR will already be set to
-# the directory containing this file.
-#
-# This file may not rely on the value of any variable other than
-# LOCAL_DIR; do not use any conditionals, and do not look up the
-# value of any variable that isn't set in this file or in a file that
-# it includes.
-#
+$(call inherit-product, device/matsunichi/griffin/full_encore.mk)
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_griffin.mk
+PRODUCT_RELEASE_NAME := TC970
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=griffin BUILD_ID=IML74K BUILD_DISPLAY_ID=IML74K BUILD_FINGERPRINT="matsunichi/matsunichi/griffin:2.3.4/IML74K/228551:user/release-keys"  PRIVATE_BUILD_DESC="griffin-user 4.0.3 IML74K 228551 release-keys"
+
+PRODUCT_NAME := cm_griffin
+PRODUCT_DEVICE := griffin

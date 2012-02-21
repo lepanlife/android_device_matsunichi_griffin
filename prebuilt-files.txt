@@ -1,0 +1,6 @@
+# audio legacy
+lib/libaudiopolicy.so
+lib/libaudio.so
+lib/libasound.so
+lib/liba2dp.so
+usr/share/alsa
